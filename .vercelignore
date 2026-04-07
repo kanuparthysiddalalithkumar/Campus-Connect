@@ -1,0 +1,7 @@
+src/
+backend/
+public/
+node_modules/
+.git/
+dist/
+!dist/**
