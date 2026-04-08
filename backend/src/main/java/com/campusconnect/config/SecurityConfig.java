@@ -48,13 +48,13 @@ public class SecurityConfig {
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(java.util.Arrays.asList(
-            "http://localhost:5173",
-            "http://localhost:3000",
-            "https://campus-connect-git-fb1b3e-kanuparthyddalalidhkumars-projects.vercel.app",
-            "https://campus-connect-production.vercel.app"
+        // Allow all Vercel preview and production URLs, plus local development
+        config.setAllowedOriginPatterns(java.util.Arrays.asList(
+            "http://localhost:*",
+            "http://127.0.0.1:*",
+            "https://*.vercel.app"
         ));
-        config.setAllowedHeaders(java.util.Arrays.asList("Origin", "Content-Type", "Accept", "Authorization", "X-Requested-With"));
+        config.setAllowedHeaders(java.util.Arrays.asList("*"));
         config.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
         config.setMaxAge(3600L);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
