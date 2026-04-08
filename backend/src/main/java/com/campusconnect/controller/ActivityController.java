@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/activities")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ActivityController {
     private final ActivityService activityService;
 
