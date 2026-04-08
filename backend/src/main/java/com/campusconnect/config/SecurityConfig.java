@@ -48,11 +48,11 @@ public class SecurityConfig {
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        // Allow all Vercel preview and production URLs, plus local development
+        // Allow all Vercel URLs and local development using regex patterns
         config.setAllowedOriginPatterns(java.util.Arrays.asList(
-            "http://localhost:*",
-            "http://127.0.0.1:*",
-            "https://*.vercel.app"
+            "http://localhost:\\d{1,5}",
+            "http://127\\.0\\.0\\.1:\\d{1,5}",
+            "https://.*\\.vercel\\.app"
         ));
         config.setAllowedHeaders(java.util.Arrays.asList("*"));
         config.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
