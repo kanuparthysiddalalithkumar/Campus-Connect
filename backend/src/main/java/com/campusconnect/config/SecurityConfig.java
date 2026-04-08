@@ -48,9 +48,15 @@ public class SecurityConfig {
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOriginPatterns(java.util.Collections.singletonList("*"));
+        config.setAllowedOrigins(java.util.Arrays.asList(
+            "http://localhost:5173",
+            "http://localhost:3000",
+            "https://campus-connect-git-fb1b3e-kanuparthyddalalidhkumars-projects.vercel.app",
+            "https://campus-connect-production.vercel.app"
+        ));
         config.setAllowedHeaders(java.util.Arrays.asList("Origin", "Content-Type", "Accept", "Authorization", "X-Requested-With"));
         config.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
+        config.setMaxAge(3600L);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
